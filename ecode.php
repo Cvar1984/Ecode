@@ -1,4 +1,175 @@
+#!/data/data/com.termux/files/usr/bin/php
 <?php
-$Cvar="pUl6RuM2EP4cc/gPiyedyCUQOz6OAy60QBttlysHHND2Lp2MlcryJcE4ZaJv9/jvXb3kFQIzrXR5WPvydfWstJLMVcQZpzntCVOi+A575OT6pGbcrG3VwGih0QCnJ1DHhX/W18pqglJl3FXz6GB97U7kkUsUi4QpxfpNNIi4KIhwSI6Lb8EYch0mupRkGY6Ip4RMHKZc0hBx2I05KWpSlIQugpZTOb1YZSiPmBAhTZZROqbgmD4YUDg8PATHDDlSwjlnGFKsqArlEBrgBzptwCfiCZcplGbBOVOGyspM8vHuPL0YXopC2dXobXwjf/v79/s/8s/FRGtZQro//fUzeFOn/Jf43df3vUn/w+DX28qBgdPwUYbcxdZqQ3965TIDskQOXWCCxwyjjeYUdfoWPEo5YjYWfRSeidc62rn4Ac7GnQyKFOKwNluTqei5fg9oF7Yfq7yp1m/M4JWdZZ7BILx4KK3V4DIcwifLLHNNk99j2uLLXr1DxKP10PR93S9RGO+vyL/OnzINCoyiM33APsuCpb7xMeLazMcKrOXEwfSNj7KoLeIZf62BtvmhWTWgrXwMgDIxQMiEFagGvvankUONPtYQc0J7IrAN/Ein/ZozoyRHLG/mSj5j/jVu/t6bSuC6TUB+Zw+dbEGD14rTs5iPKQPYnzqg8JwOhQp0H2N0cP9X8mR8p/pwzrv7tdpVC7ZGTdTm3EFSRRi3j2yS3l/TXEBGpDGTfIDqaiqxuNv2Idj2tmqAwEzeHSfgou4i4WlRL9jy6ltoz3/TDnTx/qfpLgDoaDjrA/F8Fz5f7LQXhbgbrmFymOUY0JIK90tmsrkWSK2WC5d9yf9qxGAQWXJmzscUy+UHGjM4HWeF3hLlrsyxY2UmC5KNBI9V8/Ti5qgKvkp/5SoLmZENGWkSxpIBMeZIML2K50qqFfVtaPyo1wvwo95JCz/9fsWtAnSxY2gBnKw20LMhsAEu3KjgIFhHKTcSw60J/ZnAU5RGQ7sd22Z0AcZ4otQnh+c78O0bzFZ8ZpKULClaTQhrQtlD00QqePEjPlyjpDFK2m+4UIixNAqLNaQwoDH0kpBQD0qpAOPwA3wZ1MI/7QhCM2GBFoIfLIZtrMHgKCmEhQqTIslxLknFy+NcU42MaVKIlWNv7UfxUd00EOm4oFAySG6h3t3d1ZpZz4AYDCzKcypTlea4kqzKFmfNvwq2NC0pxqN6M0wqzcenBA/qjJ1YosFLyl99OX9oWAo8nUBrNoOwildricsJAY3R7UPo7XlKQBX2rMHLecN3uuEZvuER4SUwLJ8wEVJrUeLB6RjLJY5ugeAnGQ6WGQ6ecktfANS9cgVCGZZ/Rb5UA+8A8P8Waqx3eWFB70ByjtpPpkv6cSGIP4E1rtK6V+3q6aZl1oMuXK3kNJ5yQNhPmUh3psK4wItAB1QoEvTGrAXqnuKYtanMHuasl2zVwS0yq1EvZdt3LWbb70LIHVdOJtvg4V8=";
+/*
+$Cvar="";
 eval(str_rot13(gzinflate(str_rot13(base64_decode(($Cvar))))));
-?>	
+*/
+if(strtolower(substr(PHP_OS,0,3)) == "win") {
+$bersih=cls;
+}else {
+$bersih=clear;
+}
+system("$bersih");
+error_reporting(0);
+function input($pesan){
+	global $green;
+	echo "$green $pesan >>> ";
+}
+$green="\e[92m";
+$red="\e[91m";
+menu:
+system("$bersih");
+echo "\e[93m
+ __________        _________       _________      
+ ___  ____/        __  ____/______ ______  /_____ 
+ __  __/   _________  /     _  __ \_  __  / _  _ \
+ _  /___   _/_____// /___   / /_/ // /_/ /  /  __/
+ /_____/           \____/   \____/ \__,_/   \___/";
+echo "\n$red =========================== Cvar1984 ))=====(@)>";
+echo "\e[36m
+ Author  : Cvar1984
+ Code    : PHP
+ Github  : http://github.com/Cvar1984
+ Team    : BlackHole Security
+ Version : 3.0.5 ( Alpha )
+ Date    : 03-02-2018\n";
+echo "$red =========================== Cvar1984 ))=====(@)>\n";
+echo "$green";
+echo " (01) MD5\n";
+echo " (02) Raw_URL_encode\n";
+echo " (03) Convert_uuencode\n";
+echo " (04) Base64_encode\n";
+echo " (05) base64_encode(str_rot13\n";
+echo " (06) Base64_encode(gzdeflate\n";
+echo " (07) base64_encode(gzdeflate(str_rot13\n";
+echo " (08) base64_encode(str_rot13(gzdeflate(str_rot13\n";
+echo " (XX) Exit\n";
+echo "$red =========================== Cvar1984 ))=====(@)> \n";
+input("Chose Your Type");
+$pilih=trim(fgets(STDIN, 1024));
+if(!in_array($pilih, array('01','1','02','2','03','3','04','4','05','5','06','6','07','7','08','8','XX','xx'), true)) {
+echo "\n $red ( ! ) Input false ( ! ) $green\n";
+trim(fgets(STDIN, 1024));
+goto menu;
+
+}else {
+if($pilih == "01" || $pilih == "1") {
+	input("Some Word");
+	$input=trim(fgets(STDIN));
+	$output=md5($input);
+	input("do you want write output? [y/n]");
+	$pilih=trim(fgets(STDIN));
+	if($pilih == "y") {
+	input("Output Name");
+	$namafile=trim(fgets(STDIN));
+	$tulis=fopen("$namafile", "w+");
+	chmod($namafile, 0777);
+	fwrite($tulis, $output);
+	fclose($tulis);
+   }else{
+		echo "\n$output\n\n";
+	}
+	echo "Press [ENTER]";
+	fgets(STDIN);
+	goto menu;
+	
+	}elseif($pilih == "02" || $pilih == "2") {
+	 input("Filename");
+	 $input=trim(fgets(STDIN));
+	 $dir=file_get_contents($input);
+	 input("Output Name");
+	 $namafile=trim(fgets(STDIN));
+	 $output=rawurlencode($dir);
+	 $tulis=fopen("$namafile", "w+");
+	 fwrite($tulis, $output);
+	 fclose($tulis);
+	 echo "Press [ENTER]";
+	 fgets(STDIN);
+	 goto menu;
+	 
+	 }elseif($pilih == "03" || $pilih == "3") {
+	 input("Filename");
+	 $input=trim(fgets(STDIN));
+	 $dir=file_get_contents($input);
+	 input("Output Name");
+	 $namafile=trim(fgets(STDIN));
+	 $output=convert_uuencode($dir);
+	 $tulis=fopen("$namafile", "w+");
+	 fwrite($tulis, $output);
+	 fclose($tulis);
+	 echo "Press [ENTER]";
+	 fgets(STDIN);
+	 goto menu;
+	 
+	}elseif($pilih == "04" || $pilih == "4") {
+	 input("Filename");
+	 $input=trim(fgets(STDIN));
+	 $dir=file_get_contents($input);
+	 input("Output Name");
+	 $namafile=trim(fgets(STDIN));
+	 $output=base64_encode($dir);
+	 $tulis=fopen($namafile, "w+");
+	 fwrite($tulis, $output);
+	 fclose($tulis);
+	 echo "Press [ENTER]";
+	 fgets(STDIN);
+	 goto menu;
+	 
+	 }elseif($pilih == "05" || $pilih == "5") {
+	 input("Filename");
+	 $input=trim(fgets(STDIN));
+	 $dir=file_get_contents($input);
+	 input("Output Name");
+	 $namafile=trim(fgets(STDIN));
+	 $output=base64_encode(str_rot13($dir));
+	 $tulis=fopen("$namafile", "w+");
+	 fwrite($tulis, $output);
+	 fclose($tulis);
+	 echo "Press [ENTER]";
+	 fgets(STDIN);
+	 goto menu;
+	 
+	 }elseif($pilih == "06" || $pilih == "6") {
+	 input("Filename");
+	 $input=trim(fgets(STDIN));
+	 $dir=file_get_contents($input);
+	 input("Output Name");
+	 $namafile=trim(fgets(STDIN));
+	 $output=base64_encode(gzdeflate($dir));
+	 $tulis=fopen("$namafile", "w+");
+	 fwrite($tulis, $output);
+	 fclose($tulis);
+	 echo "Press [ENTER]";
+	 fgets(STDIN);
+	 goto menu;
+	 
+	 }elseif($pilih == "07" || $pilih == "7") {
+	 input("Filename");
+	 $input=trim(fgets(STDIN));
+	 $dir=file_get_contents($input);
+	 input("Output Name");
+	 $namafile=trim(fgets(STDIN));
+	 $output=base64_encode(gzdeflate(str_rot13($dir)));
+	 $tulis=fopen("$namafile", "w+");
+	 fwrite($tulis, $output);
+	 fclose($tulis);
+	 echo "Press [ENTER]";
+	 fgets(STDIN);
+	 goto menu;
+	 
+	 }elseif($pilih == "08" || $pilih == "8") {
+	 input("Filename");
+	 $input=trim(fgets(STDIN));
+	 $dir=file_get_contents($input);
+	 input("Output Name");
+	 $namafile=trim(fgets(STDIN));
+$output=base64_encode(str_rot13(gzdeflate(str_rot13($dir))));
+	 $tulis=fopen("$namafile", "w+");
+	 fwrite($tulis, $output);
+	 fclose($tulis);
+	 echo "Press [ENTER]";
+	 fgets(STDIN);
+	 goto menu;
+}
+}
+?>
