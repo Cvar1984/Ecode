@@ -1,15 +1,11 @@
 #!/data/data/com.termux/files/usr/bin/php
 <?php
-/*
-$Cvar="";
-eval(str_rot13(gzinflate(str_rot13(base64_decode(($Cvar))))));
-*/
 if(strtolower(substr(PHP_OS,0,3)) == "win") {
 $bersih=cls;
 }else {
 $bersih=clear;
 }
-system("$bersih");
+system($bersih);
 error_reporting(0);
 function input($pesan){
 	global $green;
@@ -18,7 +14,7 @@ function input($pesan){
 $green="\e[92m";
 $red="\e[91m";
 menu:
-system("$bersih");
+system($bersih);
 echo "\e[93m
  __________        _________       _________      
  ___  ____/        __  ____/______ ______  /_____ 
@@ -31,7 +27,7 @@ echo "\e[36m
  Code    : PHP
  Github  : http://github.com/Cvar1984
  Team    : BlackHole Security
- Version : 3.0.5 ( Alpha )
+ Version : 4.0.5 ( Alpha )
  Date    : 03-02-2018\n";
 echo "$red =========================== Cvar1984 ))=====(@)>\n";
 echo "$green";
@@ -39,10 +35,10 @@ echo " (01) MD5\n";
 echo " (02) Raw_URL_encode\n";
 echo " (03) Convert_uuencode\n";
 echo " (04) Base64_encode\n";
-echo " (05) base64_encode(str_rot13\n";
+echo " (05) Base64_encode(str_rot13\n";
 echo " (06) Base64_encode(gzdeflate\n";
-echo " (07) base64_encode(gzdeflate(str_rot13\n";
-echo " (08) base64_encode(str_rot13(gzdeflate(str_rot13\n";
+echo " (07) Base64_encode(gzdeflate(str_rot13\n";
+echo " (08) Base64_encode(str_rot13(gzdeflate(str_rot13\n";
 echo " (XX) Exit\n";
 echo "$red =========================== Cvar1984 ))=====(@)> \n";
 input("Chose Your Type");
@@ -170,6 +166,8 @@ $output=base64_encode(str_rot13(gzdeflate(str_rot13($dir))));
 	 echo "Press [ENTER]";
 	 fgets(STDIN);
 	 goto menu;
+}elseif($pilih == "xx" || $pilih == "XX") {
+die();
 }
 }
 ?>
