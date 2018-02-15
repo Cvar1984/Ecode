@@ -1,3 +1,0 @@
-chmod +x ecode
-mv ecode /data/data/com.termux/files/usr/bin
-echo "Type ecode to run"
