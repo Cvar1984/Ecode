@@ -1,253 +1,75 @@
-#!/data/data/com.termux/files/usr/bin/php
+#!/bin/php
 <?php
 if(strtolower(substr(PHP_OS,0,3)) == "win") {
-$bersih=cls;
-}else {
-$bersih=clear;
+$G="";
+$R="";
+$Y="";
+$B="";
+} else {
+$R="\e[91m";
+$RR="\e[91;7m";
+$RB="\e[101m";
+$G="\e[92m";
+$GG="\e[92;7m";
+$B="\e[36m";
+$BB="\e[36;7m";
+$Y="\e[93m";
+$YY="\e[93;7m";
+$X="\e[0m";
+system("clear");
 }
-system($bersih);
-error_reporting(0);
-function input($pesan){
-global $green;
-echo "$green $pesan >>> ";
-}
-$green="\e[92m";
-$red="\e[91m";
-menu:
-function banner() {
-global $red,$bersih;
-system($bersih);
-echo "\e[93m
-  ______                      _        
- |  ____|                    | |       
- | |__      ___    ___     __| |   ___ 
- |  __|    / __|  / _ \   / _` |  / _ \
- | |____  | (__  | (_) | | (_| | |  __/
- |______|  \___|  \___/   \__,_|  \___|";
-echo "\n$red =========================== Cvar1984 ))=====(@)>";
-echo "\e[36m
- Author  : Cvar1984
- Code    : PHP
- Github  : http://github.com/Cvar1984
- Team    : BlackHole Security
- Version : 4.0.5 ( Alpha )
- Date    : 03-02-2018\n";
-echo "$red =========================== Cvar1984 ))=====(@)>\n";}
-banner();
-echo "$green";
-echo " (01) Encode\n";
-echo " (02) Decode\n";
-echo "$red =========================== Cvar1984 ))=====(@)>\n";
-input("Encode / Decode?");
-$pilihan=trim(fgets(STDIN));
-if($pilihan == "01" || $pilihan == "1") {
-$pilihan="encode";
-banner();
-echo "$green";
-echo " (01) MD5\n";
-echo " (02) Raw_url\n";
-echo " (03) Convert_uu\n";
-echo " (04) Base64\n";
-echo " (05) Base64(str_rot13\n";
-echo " (06) Base64(gzdeflate\n";
-echo " (07) Base64(gzdeflate(str_rot13\n";
-echo " (08) Base64(str_rot13(gzdeflate(str_rot13\n";
-echo " (09) Base64(gzdeflate(convert_uu(str_rot13(gzdeflate(base64\n";
-echo " (XX) Exit\n";
-echo "$red =========================== Cvar1984 ))=====(@)> \n";
-}else {
-$pilihan="decode";
-banner();
-echo "$green";
-echo " (01) Back\n";
-echo " (02) Raw_url\n";
-echo " (03) Convert_uu\n";
-echo " (04) Base64\n";
-echo " (05) Base64(str_rot13\n";
-echo " (06) Base64(gzdeflate\n";
-echo " (07) Base64(gzdeflate(str_rot13\n";
-echo " (08) Base64(str_rot13(gzdeflate(str_rot13\n";
-echo " (09) Base64(gzdeflate(convert_uu(str_rot13(gzdeflate(base64\n";
-echo " (XX) Exit\n";
-echo "$red =========================== Cvar1984 ))=====(@)> \n";
-}
-input("Chose Your Type");
-$pilih=trim(fgets(STDIN));
-if(!in_array($pilih, array('01','1','02','2','03','3','04','4','05','5','06','6','07','7','08','8','09','9','XX','xx'), true)) {
-echo "\n $red ( ! ) Input false ( ! ) $green\n";
-fgets(STDIN, 1024);
-goto menu;
-}else {
-if($pilih == "01" || $pilih == "1") {
-	if($pilihan == "decode") {
-	goto menu;
+echo $Y."
+███████╗ ██████╗ ██████╗ ██████╗ ███████╗
+██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝
+█████╗  ██║     ██║   ██║██║  ██║█████╗  
+██╔══╝  ██║     ██║   ██║██║  ██║██╔══╝  
+███████╗╚██████╗╚██████╔╝██████╔╝███████╗
+╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝";
+echo $R."\n++++++++++++++++++++++++++++++++++++++";
+echo $B."\nAuthor  : Cvar1984                   ".$R."+";
+echo $B."\nGithub  : http://github.com/Cvar1984 ".$R."+";
+echo $B."\nTeam    : BlackHole Security         ".$R."+";
+echo $B."\nVersion : 4.0.6 ( Alpha )            ".$R."+";
+echo $B."\nDate    : 03-02-2018                 ".$R."+";
+echo $R."\n++++++++++++++++++++++++++++++++++++++".$G."\n";
+function encode($string) {
+	$hex='';
+	for($i=0;$i < strlen($string);$i++) {
+		$hex.=dechex(ord($string[$i]));
 	}
-	input("Some Word");
-	$input=trim(fgets(STDIN));
-	$output=md5($input);
-	input("Do you want write output? [y/n]");
-	$pilih=trim(fgets(STDIN));
-	if($pilih == "y") {
-	input("Output Name");
-	$namafile=trim(fgets(STDIN));
-	$tulis=fopen("$namafile", "w+");
-	fwrite($tulis, $output);
-	fclose($tulis);
+return $hex;
 }
-	else{
-	echo "\n$output\n\n";
+/*
+// Hex Decoder
+function decode($hex) {
+	$string='';
+	for($i=0; $i < strlen($hex)-1;$i+=2) {
+	$string .= chr(hexdec($hex[$i].$hex[$i+1]));
 }
-	echo "Press [ENTER]";
-	fgets(STDIN);
-	goto menu;
+return $string;
+}*/
+back:
+$file1=readline("Filename\t: ");
+if(!file_exists($file1)) {
+	echo $RR."[!] File Not Exists [!]".$X.$G."\n";
+	goto back;
 }
-	 elseif($pilih == "02" || $pilih == "2") {
-	 input("Filename");
-	 $input=trim(fgets(STDIN));
-	 $dir=file_get_contents($input);
-	 input("Output Name");
-	 $namafile=trim(fgets(STDIN));
-	 if($pilihan == "encode") {
-	 $output=rawurlencode($dir);
-	 }
-	 else {
-	 $output=rawurldecode($dir);
-	 }
-	 $tulis=fopen("$namafile", "w+");
-	 fwrite($tulis, $output);
-	 fclose($tulis);
-	 echo "Press [ENTER]";
-	 fgets(STDIN);
-	 goto menu;
+$file2=readline("Output Name\t: ");
+$file=file_get_contents($file1);
+if(preg_match("/<?php/",$file)) {
+	$file=str_replace("<?php","",$file);
 }
-	 elseif($pilih == "03" || $pilih == "3") {
-	 input("Filename");
-	 $input=trim(fgets(STDIN));
-	 $dir=file_get_contents($input);
-	 input("Output Name");
-	 $namafile=trim(fgets(STDIN));
-	 if($pilihan == "encode") {
-	 $output=convert_uuencode($dir);
-	 }else {
-	 $output=convert_uudecode($dir);
-	 }
-	 $tulis=fopen("$namafile", "w+");
-	 fwrite($tulis, $output);
-	 fclose($tulis);
-	 echo "Press [ENTER]";
-	 fgets(STDIN);
-	 goto menu;
-}
-	 elseif($pilih == "04" || $pilih == "4") {
-	 input("Filename");
-	 $input=trim(fgets(STDIN));
-	 $dir=file_get_contents($input);
-	 input("Output Name");
-	 $namafile=trim(fgets(STDIN));
-	 if($pilihan == "encode") {
-	 $output=base64_encode($dir);
-	 }else {
-	 $output=base64_decode($dir);
-	 }
-	 $tulis=fopen($namafile, "w+");
-	 fwrite($tulis, $output);
-	 fclose($tulis);
-	 echo "Press [ENTER]";
-	 fgets(STDIN);
-	 goto menu;
-}
-	 elseif($pilih == "05" || $pilih == "5") {
-	 input("Filename");
-	 $input=trim(fgets(STDIN));
-	 $dir=file_get_contents($input);
-	 input("Output Name");
-	 $namafile=trim(fgets(STDIN));
-	 if($pilihan == "encode") {
-	 $output=base64_encode(str_rot13($dir));
-	 }else {
-	 $output=str_rot13(base64_decode($dir));
-	 }
-	 $tulis=fopen("$namafile", "w+");
-	 fwrite($tulis, $output);
-	 fclose($tulis);
-	 echo "Press [ENTER]";
-	 fgets(STDIN);
-	 goto menu;
-}
-	 elseif($pilih == "06" || $pilih == "6") {
-	 input("Filename");
-	 $input=trim(fgets(STDIN));
-	 $dir=file_get_contents($input);
-	 input("Output Name");
-	 $namafile=trim(fgets(STDIN));
-	 if($pilihan == "encode") {
-	 $output=base64_encode(gzdeflate($dir));
-	 }else {
-	 $output=gzinflate(base64_decode($dir));
-	 }
-	 $tulis=fopen("$namafile", "w+");
-	 fwrite($tulis, $output);
-	 fclose($tulis);
-	 echo "Press [ENTER]";
-	 fgets(STDIN);
-	 goto menu;
-}
-	 elseif($pilih == "07" || $pilih == "7") {
-	 input("Filename");
-	 $input=trim(fgets(STDIN));
-	 $dir=file_get_contents($input);
-	 input("Output Name");
-	 $namafile=trim(fgets(STDIN));
-	 if($pilihan == "encode") {
-	 $output=base64_encode(gzdeflate(str_rot13($dir)));
-	 }else {
-	 $output=str_rot13(gzinflate(base64_decode($dir)));
-	 }
-	 $tulis=fopen("$namafile", "w+");
-	 fwrite($tulis, $output);
-	 fclose($tulis);
-	 echo "Press [ENTER]";
-	 fgets(STDIN);
-	 goto menu;
-}
-	 elseif($pilih == "08" || $pilih == "8") {
-	 input("Filename");
-	 $input=trim(fgets(STDIN));
-	 $dir=file_get_contents($input);
-	 input("Output Name");
-	 $namafile=trim(fgets(STDIN));
-	 if($pilihan == "encode") {
-$output=base64_encode(str_rot13(gzdeflate(str_rot13($dir))));
-	 }else {
-	 $output=str_rot13(gzinflate(str_rot13(base64_decode($dir))));
-	 }
-	 $tulis=fopen("$namafile", "w+");
-	 fwrite($tulis, $output);
-	 fclose($tulis);
-	 echo "Press [ENTER]";
-	 fgets(STDIN);
-	 goto menu;
-}
-	 elseif($pilih == "09" || $pilih == "9") {
-	 input("Filename");
-	 $input=trim(fgets(STDIN));
-	 $dir=file_get_contents($input);
-	 input("Output Name");
-	 $namafile=trim(fgets(STDIN));
-	 if($pilihan == "encode") {
-$output=base64_encode(gzdeflate(convert_uuencode(str_rot13(gzdeflate(base64_encode($dir))))));
-	 }else {
-	 $output=base64_decode(gzinflate(str_rot13(convert_uudecode(gzinflate(base64_decode($dir))))));
-	 }
-	 $tulis=fopen("$namafile", "w+");
-	 fwrite($tulis, $output);
-	 fclose($tulis);
-	 echo "Press [ENTER]";
-	 fgets(STDIN);
-	 goto menu;
-}
-	 elseif($pilih == "xx" || $pilih == "XX") {
-	 die();
-}
-}
-?>
+$file=encode(base64_encode($file));
+$isi="eval(str_rot13(base64_decode('c2hhcGd2YmEgcXJwYnFyKCRQaW5lMTk4NCl7JGZnZXZhdD0nJztzYmUoJHY9MDskdjxmZ2V5cmEoJFBpbmUxOTg0KS0xOyR2Kz0yKXskZmdldmF0Lj1wdWUodXJrcXJwKCRQaW5lMTk4NFskdl0uJFBpbmUxOTg0WyR2KzFdKSk7fQ0KZXJnaGVhICRmZ2V2YXQ7fSRhdD0nZXJmZic7JG5hPSd0bWgnOyRvdj0nYnFyJzskd3Y9J2FwYnpjJzskbz0nZW5qJzskbj0naGV5cXJwJzskb25vdj0kby4kbi4kb3Y7JG5hd3ZhdD0kbmEuJHd2LiRhdDsg')));eval(\$anjing(\$babi('x%9CS%C9%CE%B7UJJ%2CV%B2%E6R%C9%2B%B1UJ53%89OIM%06q%F3sl%95%F2SRA%CC%EC%FC%BC%12%20%17H%EB%01U%E9%01%A5%AC%01%D7.%10%B0')));eval(\$kontol(decode('".$file."')));";
+$tulis=fopen($file2,"w+");
+fwrite($tulis,$isi);
+fclose($tulis);
+$file=file_get_contents($file2);
+$file=rawurlencode(gzdeflate($file));
+$isi='<?php eval(gzinflate(rawurldecode("'.$file.'")));';
+$tulis=fopen($file2,"w+");
+fwrite($tulis,$isi);
+fclose($tulis);
+echo $G."\nOriginal Size\t: ".$Y.filesize($file1).$G." Bytes".$X."\n";
+echo $G."Encoded Size\t: ".$R.filesize($file2).$G." Bytes".$X."\n";
+echo $R."=========================== Cvar1984 ))=====(@)>".$X."\n";
