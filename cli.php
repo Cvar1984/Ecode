@@ -1,10 +1,16 @@
 #!/bin/php
 <?php
 if(strtolower(substr(PHP_OS,0,3)) == "win") {
-$G="";
 $R="";
-$Y="";
+$RR="";
+$RB="";
+$G="";
+$GG="";
 $B="";
+$BB="";
+$Y="";
+$YY="";
+$X="";
 } else {
 $R="\e[91m";
 $RR="\e[91;7m";
