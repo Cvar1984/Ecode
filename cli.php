@@ -1,81 +1,69 @@
-#!/bin/php
+#!/usr/bin/env php
 <?php
-if(strtolower(substr(PHP_OS,0,3)) == "win") {
-$R="";
-$RR="";
-$RB="";
-$G="";
-$GG="";
-$B="";
-$BB="";
-$Y="";
-$YY="";
-$X="";
+if(strtolower(substr(PHP_OS, 0, 3)) == 'win') {
+    $R  = "";
+    $RR = "";
+    $G  = "";
+    $GG = "";
+    $B  = "";
+    $BB = "";
+    $Y  = "";
+    $YY = "";
+    $X  = "";
 } else {
-$R="\e[91m";
-$RR="\e[91;7m";
-$RB="\e[101m";
-$G="\e[92m";
-$GG="\e[92;7m";
-$B="\e[36m";
-$BB="\e[36;7m";
-$Y="\e[93m";
-$YY="\e[93;7m";
-$X="\e[0m";
-system("clear");
+    $R  = "\e[91m";
+    $RR = "\e[91;7m";
+    $G  = "\e[92m";
+    $GG = "\e[92;7m";
+    $B  = "\e[36m";
+    $BB = "\e[36;7m";
+    $Y  = "\e[93m";
+    $YY = "\e[93;7m";
+    $X  = "\e[0m";
+    system("clear");
 }
 echo $Y."
-███████╗ ██████╗ ██████╗ ██████╗ ███████╗
-██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝
-█████╗  ██║     ██║   ██║██║  ██║█████╗  
-██╔══╝  ██║     ██║   ██║██║  ██║██╔══╝  
-███████╗╚██████╗╚██████╔╝██████╔╝███████╗
-╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝";
+ ___                       
+/ (_)               |      
+\__     __   __   __|   _  
+/      /    /  \_/  |  |/  
+\___/  \___/\__/ \_/|_/|__/";
 echo $R."\n++++++++++++++++++++++++++++++++++++++";
 echo $B."\nAuthor  : Cvar1984                   ".$R."+";
-echo $B."\nGithub  : http://github.com/Cvar1984 ".$R."+";
+echo $B."\nGithub  : https://github.com/Cvar1984".$R."+";
 echo $B."\nTeam    : BlackHole Security         ".$R."+";
-echo $B."\nVersion : 4.0.6 ( Alpha )            ".$R."+";
+echo $B."\nVersion : 4.1.0                      ".$R."+";
 echo $B."\nDate    : 03-02-2018                 ".$R."+";
 echo $R."\n++++++++++++++++++++++++++++++++++++++".$G."\n";
-function encode($string) {
-	$hex='';
-	for($i=0;$i < strlen($string);$i++) {
-		$hex.=dechex(ord($string[$i]));
-	}
-return $hex;
+if(isset($argv[1]) AND isset($argv[2]) AND isset($argv[3])) {
+if(!file_exists($argv[1])) {
+	die($RR."[!] File Not Exists [!]\n$X");
 }
-/*
-// Hex Decoder
-function decode($hex) {
-	$string='';
-	for($i=0; $i < strlen($hex)-1;$i+=2) {
-	$string .= chr(hexdec($hex[$i].$hex[$i+1]));
+$string=file_get_contents($argv[1]);
+function hex($str) {
+	$ec=bin2hex($str);
+	$ec=chunk_split($ec,2,'\x');
+	$ec='\x'.substr($ec,0,strlen($ec)-2);
+	return $ec;
 }
-return $string;
-}*/
-back:
-$file1=readline("Filename\t: ");
-if(!file_exists($file1)) {
-	echo $RR."[!] File Not Exists [!]".$X.$G."\n";
-	goto back;
+if($argv[2] == "--hex" OR $argv[2] == "-h") {
+	ob_start();
+	echo hex($string);
+	$string=ob_get_clean();
+	$isi='<?php eval("?>'.$string.'");';
+} elseif($argv[2] == "--url" OR $argv[2] == "-u") {
+	$i=urlencode(gzdeflate($string));
+	$isi="<?php eval('?>'.gzinflate(urldecode('$i')));";
+} else {
+	die($RR."[!] Parameter False [!]\n$X");
 }
-$file2=readline("Output Name\t: ");
-$file=file_get_contents($file1);
-/*if(preg_match("/<?php/",$file)) {
-	$file=str_replace("<?php","",$file);
-}*/
-$file=encode(base64_encode($file));
-$isi="eval(str_rot13(base64_decode('c2hhcGd2YmEgcXJwYnFyKCRQaW5lMTk4NCl7JGZnZXZhdD0nJztzYmUoJHY9MDskdjxmZ2V5cmEoJFBpbmUxOTg0KS0xOyR2Kz0yKXskZmdldmF0Lj1wdWUodXJrcXJwKCRQaW5lMTk4NFskdl0uJFBpbmUxOTg0WyR2KzFdKSk7fQ0KZXJnaGVhICRmZ2V2YXQ7fSRhdD0nZXJmZic7JG5hPSd0bWgnOyRvdj0nYnFyJzskd3Y9J2FwYnpjJzskbz0nZW5qJzskbj0naGV5cXJwJzskb25vdj0kby4kbi4kb3Y7JG5hd3ZhdD0kbmEuJHd2LiRhdDsg')));eval(\$anjing(\$babi('x%9CS%C9%CE%B7UJJ%2CV%B2%E6R%C9%2B%B1UJ53%89OIM%06q%F3sl%95%F2SRA%CC%EC%FC%BC%12%20%17H%EB%01U%E9%01%A5%AC%01%D7.%10%B0')));eval('?>'.\$kontol(decode('".$file."')));";
-$tulis=fopen($file2,"w+");
+$tulis=fopen($argv[3],"w+");
 fwrite($tulis,$isi);
 fclose($tulis);
-$file=file_get_contents($file2);
-$file=rawurlencode(gzdeflate($file));
-$isi='<?php eval(gzinflate(rawurldecode("'.$file.'")));';
-$tulis=fopen($file2,"w+");
-fwrite($tulis,$isi);
-fclose($tulis);
-echo $G."\nOriginal Size\t: ".$Y.filesize($file1).$G." Bytes".$X."\n";
-echo $G."Encoded Size\t: ".$R.filesize($file2).$G." Bytes".$X."\n";
-echo $R."=========================== Cvar1984 ))=====(@)>".$X."\n";
+echo "Original Size\t: ".filesize($argv[1])." Bytes\n";
+echo "Encoded Size\t: ".filesize($argv[3])." Bytes\n";	
+} else {
+	echo $Y."--hex, -h\tHexadecimal Encode\n";
+    echo "--url, -u\tUrl Encode\n\n";
+    echo "Example : ".$GG."php $argv[0] source.php --hex output.php".$X."\n";
+}
