@@ -53,7 +53,7 @@ if($argv[2] == "--hex" OR $argv[2] == "-h") {
 	$isi='<?php eval("?>'.$string.'");';
 } elseif($argv[2] == "--url" OR $argv[2] == "-u") {
 	$i=urlencode(gzdeflate($string));
-	$isi="<?php eval('?>'.gzinflate(urldecode('$i')));";
+	$isi='<?php $a="\x67\x7a\x69\x6e\x66\x6c\x61\x74\x65";$b="\x75\x72\x6c\x64\x65\x63\x6f\x64\x65";eval("?>".$a($b("'.$i.'")));';
 } else {
 	die($RR."[!] Parameter False [!]\n$X");
 }
@@ -65,5 +65,5 @@ echo "Encoded Size\t: ".filesize($argv[3])." Bytes\n";
 } else {
 	echo $Y."--hex, -h\tHexadecimal Encode\n";
     echo "--url, -u\tUrl Encode\n\n";
-    echo "Example : ".$GG."php $argv[0] source.php --hex output.php".$X."\n";
+    echo "Example : ".$GG."php ".$argv[0]." source.php --hex output.php".$X."\n";
 }
