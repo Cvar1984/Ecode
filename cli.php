@@ -32,7 +32,7 @@ echo $R."\n++++++++++++++++++++++++++++++++++++++";
 echo $B."\nAuthor  : Cvar1984                   ".$R."+";
 echo $B."\nGithub  : https://github.com/Cvar1984".$R."+";
 echo $B."\nTeam    : BlackHole Security         ".$R."+";
-echo $B."\nVersion : 4.1.1                      ".$R."+";
+echo $B."\nVersion : 4.1.0                      ".$R."+";
 echo $B."\nDate    : 03-02-2018                 ".$R."+";
 echo $R."\n++++++++++++++++++++++++++++++++++++++".$G."\n";
 if(isset($argv[1]) AND isset($argv[2]) AND isset($argv[3])) {
@@ -48,11 +48,11 @@ function hex($str) {
 }
 if($argv[2] == "--hex" OR $argv[2] == "-h") {
 	ob_start();
-	echo hex(gzdeflate($string));
+	echo hex(gzdeflate($string,'9'));
 	$string=ob_get_clean();
 	$isi='<?php eval("?>".gzinflate("'.$string.'"));';
 } elseif($argv[2] == "--url" OR $argv[2] == "-u") {
-	$i=urlencode(gzdeflate($string));
+	$i=urlencode(gzdeflate($string,'9'));
 	$isi='<?php $a="\x67\x7a\x69\x6e\x66\x6c\x61\x74\x65";$b="\x75\x72\x6c\x64\x65\x63\x6f\x64\x65";eval("?>".$a($b("'.$i.'")));';
 } else {
 	die($RR."[!] Parameter False [!]\n$X");
